@@ -11,8 +11,17 @@ package 'apache2' do
 end
 
 #next configure a file for this <file> resource
+# in the index file let's try to update the 
+# system information using node object and strin
+# interpolation.
 file '/var/www/html/index.html' do
-  content '<h1>Hello World </h1>'
+  content "<html><h1>Hello World </h1>
+           <head>
+              <title>node info </title>
+           </head>
+           <body>IPADDRESS:#{node['ipaddress']}
+                 HOSTNAME:#{node['hostname']}
+                 MEMORY:#{node['memory']['total']}</body></html>"
 end
 
 # start the service with <service> resource
