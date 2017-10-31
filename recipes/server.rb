@@ -14,14 +14,19 @@ end
 # in the index file let's try to update the 
 # system information using node object and strin
 # interpolation.
-file '/var/www/html/index.html' do
-  content "<html><h1>Hello World </h1>
-           <head>
-              <title>node info </title>
-           </head>
-           <body>IPADDRESS:#{node['ipaddress']}
-                 HOSTNAME:#{node['hostname']}
-                 MEMORY:#{node['memory']['total']}</body></html>"
+#file '/var/www/html/index.html' do
+#  content "<html><h1>Hello World </h1>
+#           <head>
+#              <title>node info </title>
+#           </head>
+#           <body>IPADDRESS:#{node['ipaddress']}
+#                 HOSTNAME:#{node['hostname']}
+#                 MEMORY:#{node['memory']['total']}</body></html>"
+#end
+
+template '/var/www/html/index.html' do
+  source 'index.html.erb'
+  action :create
 end
 
 # start the service with <service> resource
