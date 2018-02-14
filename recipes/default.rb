@@ -9,3 +9,6 @@
 # using <includ_recipe> syntax
 
 include_recipe "apache::server"
+
+#default[:firstname]='arun'
+#default[:lastname]='kumar'
